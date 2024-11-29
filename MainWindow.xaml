@@ -1,0 +1,51 @@
+﻿<Window x:Class="MasterFloor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterFloor"
+        mc:Ignorable="d"
+        Title="MasterFloor" Height="450" Width="800" Loaded="Window_Loaded" Icon="/res/Мастер пол.ico">
+    <Grid>
+        <ListBox x:Name="partnersList" SelectionChanged="partnersList_SelectionChanged" SelectedValuePath="id" Margin="10,50,10,88" Background="#FFF4E8D3">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Black" Width="730" Height="90">
+                        <Grid Width="725" Height="80">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" FontSize="16" Text="{Binding Path=name}" />
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" FontSize="16" Text="{Binding Path=type, StringFormat='| {0}'}" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="16" Text="{Binding StringFormat={}{0:P}, Path=discount}" HorizontalAlignment="Right" Margin="0,0,10,0" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontSize="12" Text="{Binding Path=director}" Margin="10,0,0,0" HorizontalAlignment="Left" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" FontSize="12" Text="{Binding Path=telephone, StringFormat='+{0}'}" Margin="10,0,0,0" HorizontalAlignment="Left" />
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FontSize="12" Text="{Binding Path=rating, StringFormat='Рейтинг: {0}'}" Margin="10,0,0,0" HorizontalAlignment="Left" />
+                        </Grid>
+
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="addPartnerBtn" Content="Добавить партнёра" HorizontalAlignment="Left" Margin="302,336,0,0" VerticalAlignment="Top" Click="addPartnerBtn_Click" Background="#FF67BA80" Width="205"/>
+        <Button x:Name="redactPartnerBtn" Content="Редактировать партнёра" HorizontalAlignment="Left" Margin="302,361,0,0" VerticalAlignment="Top" Click="redactPartnerBtn_Click" Background="#FF67BA80" Width="205"/>
+        <Label Content="Список партнёров" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="22" Margin="0,6,0,0" Background="#00000000"/>
+        <Button x:Name="historyRealizationBtn" Content="История реализации" HorizontalAlignment="Left" Margin="302,386,0,0" VerticalAlignment="Top" Click="historyRealizationBtn_Click" Background="#FF67BA80" Width="205"/>
+        <Button x:Name="materialBtn" Content="Метод" HorizontalAlignment="Left" Margin="79,361,0,0" VerticalAlignment="Top" Background="#FF67BA80" Width="205" Click="materialBtn_Click"/>
+        <Image HorizontalAlignment="Left" Height="40" Margin="40,6,0,0" VerticalAlignment="Top" Width="40" Source="/res/Мастер пол.png"/>
+
+    </Grid>
+</Window>
